@@ -9,7 +9,8 @@
 <body>
 <div id="user_nav">  
 	<% if current_user %>  
-    	Bonjour, <%= current_user.name %>!  
+    	Bonjour, <%= current_user.name %> !  
+    	<%= link_to "Sign Out", signout_path %>
   	<% else %>  
     	<%= link_to "Log in avec AAI", "/auth/developer" %>
   	<% end %>

@@ -9,7 +9,7 @@ PresPlom::Application.routes.draw do
   post '/auth/:provider/callback', to: 'sessions#create'
   get '/auth/developer', as: :omniauth
 
-  
+  match "/signout" => "sessions#destroy", :as => :signout
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
