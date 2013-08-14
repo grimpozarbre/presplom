@@ -1,5 +1,7 @@
 PresPlom::Application.routes.draw do
-  root :to => 'protected#index'
+  #get "pages/home"
+  
+  root :to => 'pages#home'
   
   get "protected" => 'protected#index'
   get "sessions/create"
