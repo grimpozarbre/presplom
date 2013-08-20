@@ -1,4 +1,9 @@
 PresPlom::Application.routes.draw do
+  
+  #get "users/index"
+
+  #get "dashboard/index"
+
   #get "pages/home"
   
   root :to => 'pages#home'
@@ -10,7 +15,17 @@ PresPlom::Application.routes.draw do
   get '/auth/developer', as: :omniauth
 
   match "/signout" => "sessions#destroy", :as => :signout
-
+  
+  resources :users
+  
+  namespace :admin do 
+    get '', to: 'dashboard#index', as: '/' 
+    resources :users
+  end
+  
+  
+  #match "/auth/failure" => "sessions#failure"
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
