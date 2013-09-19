@@ -2,11 +2,11 @@ class Admin::UsersController < ApplicationController
 
   
   def index
-    @users = User.all
+    @users = User.where(subtype: 'user').all  # Tous les utilisateurs, exceptés les étudiants
   end
   
   def show
-    @user = User.find(params[:id])
+     @user = User.find(params[:id])
   end
   
   def new
@@ -14,9 +14,9 @@ class Admin::UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      redirect_to admin_users_path, :flash => { :success => 'User was successfully created.' }
+    @user = User.new(params[:user].merge :subtype => 'user') # Création de l'utilisateur, et ajout de la valeur "user" dans le paramètre "subtype" 
+    if @user.save 
+      redirect_to admin_users_path, :flash => { :success => 'Utilisateur cree avec succes.' }
     else
       render :action => 'new'
     end
@@ -30,7 +30,7 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
  
     if @user.update_attributes(params[:user])
-      redirect_to admin_users_path, :flash => { :success => 'User was successfully updated.' }
+      redirect_to admin_users_path, :flash => { :success => 'Utilisateur modifie avec succes.' }
     else
       render :action => 'edit'
     end

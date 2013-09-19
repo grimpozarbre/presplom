@@ -8,7 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body id="body">
-	<div id="banner">  
+		<div id="banner">  
 		<% if can? :manage, @user %>
   				<%= link_to "Administration", admin_path %>
 		<% end %>
@@ -21,7 +21,7 @@
 	</div>
 	<div id="columns">
 		<div id="sidebar">
-			<a href="">Test</a>
+			<%= link_to "Ma page", root_path %>
 		</div>		
 		<section class="main">
 			<%= yield %>

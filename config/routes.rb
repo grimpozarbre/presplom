@@ -17,6 +17,8 @@ PresPlom::Application.routes.draw do
   match "/signout" => "sessions#destroy", :as => :signout
   
   resources :users
+  resources :etudiants
+  
   
   namespace :admin do 
     get '', to: 'dashboard#index', as: '/'   # dashboard#index 

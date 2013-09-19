@@ -11,7 +11,24 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130902124936) do
+ActiveRecord::Schema.define(:version => 20130913130001) do
+
+  create_table "etudiants", :primary_key => "user_id", :force => true do |t|
+    t.string   "titre"
+    t.string   "naissance"
+    t.string   "origine"
+    t.string   "adresse"
+    t.string   "care_of"
+    t.string   "npa"
+    t.string   "ville"
+    t.string   "filiere"
+    t.string   "orientation"
+    t.string   "mode"
+    t.datetime "last_connected_at"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+    t.string   "statut"
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -29,12 +46,11 @@ ActiveRecord::Schema.define(:version => 20130902124936) do
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
     t.integer  "idpersonne",  :limit => 255
-    t.string   "username"
     t.string   "nom"
     t.string   "prenom"
     t.string   "email"
     t.string   "departement"
-    t.string   "usertype"
+    t.string   "subtype"
   end
 
 end

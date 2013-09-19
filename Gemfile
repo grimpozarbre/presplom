@@ -6,8 +6,12 @@ gem 'rails', '3.2.13'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem 'omniauth'
-gem 'cancan'
+gem 'omniauth'                               # Permet l'authentification    
+gem 'cancan'                                 # Permet la gestion de rôles
+gem 'multiple_table_inheritance', '~> 0.2.1' # Permet l'héritage entre plusieurs tables de BD
+gem 'tiny_tds' 
+gem 'activerecord-sqlserver-adapter'         # Permet la connection à MS SQLServer
+
 
 gem 'jquery-rails'
 # Gems used only for assets and not required
