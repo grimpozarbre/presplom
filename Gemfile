@@ -12,7 +12,7 @@ gem 'multiple_table_inheritance', '~> 0.2.1' # Permet l'héritage entre plusieur
 gem 'tiny_tds' 
 gem 'activerecord-sqlserver-adapter'         # Permet la connection à MS SQLServer
 gem 'activerecord-import', '0.3.1'#, :require => false
-gem 'paper_trail'
+gem 'workflow'
 
 
 gem 'jquery-rails'

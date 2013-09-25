@@ -5,6 +5,8 @@ class Etudiant < ActiveRecord::Base
   
   attr_accessible :titre, :naissance, :origine, :adresse, :care_of, :npa, :ville, :filiere, :orientation, :mode, :last_connected_at, :statut
   
+  #belongs_to :user  # 1 étudiant est suivi par un user (Prof. resp. TB)
+  
   
 
 end
