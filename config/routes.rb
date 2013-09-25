@@ -23,6 +23,7 @@ PresPlom::Application.routes.draw do
   namespace :admin do 
     get '', to: 'dashboard#index', as: '/'   # dashboard#index 
     resources :users
+    resources :etudiants
   end
   
   

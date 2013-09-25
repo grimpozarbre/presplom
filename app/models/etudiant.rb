@@ -1,7 +1,9 @@
 class Etudiant < ActiveRecord::Base
-  inherits_from :user, :methods => true
+  has_paper_trail #Défini que le modèle "Etudiant" utilise le gestionnaire de version
   
-  attr_accessible :titre, :naissance, :origine, :adresse, :care_of, :npa, :ville, :filiere, :orientation, :mode, :last_connected_at
+  inherits_from :user, :class_name => 'User', :methods => true   #Modèle "Etudiant" hérite du modèle "user"
+  
+  attr_accessible :titre, :naissance, :origine, :adresse, :care_of, :npa, :ville, :filiere, :orientation, :mode, :last_connected_at, :statut
   
   
 

@@ -1,11 +1,28 @@
+
 class EtudiantsController < ApplicationController
+    require 'active_record'
+    require "activerecord-import/base"
+   # ActiveRecord::Import.require_adapter('SQLite3')
     
   def index
     
   end
-    
   
+  def create 
+    # uniquement mode automatique
+    #@etudiant = Etudiant.new
+    etudiants = []
+      10.times do |i| 
+        etudiants << Etudiant.new(
+        :nom =>  "Nom"+i)
+      end
+    Etudiant.import etudiants
+  end 
+    
   def update
+    # 
+   #  ici vient le code 
+   
     test 'can connect to external sql server instance (bypassing ActiveRecord)' do
     result = fetch_rows
     assert_equal 6, result.count
@@ -14,16 +31,33 @@ class EtudiantsController < ApplicationController
 
     def fetch_rows
       client = TinyTds::Client.new(username: 'EINET\bi-service', password: 'VNes41&bI', host: 'EIBISQL', database: 'EIBISQL')
-      client.execute("SELECT titre, naissance, origine, adresse, care_of, npa, ville, filiere, orientation, mode FROM [AGE_ETU_STAT_CUBE_ADMISSION]") # #AGE_ETU_STAT_CUBE_GLOBAL
+      result = client.execute("SELECT nom, prenom, titre, naissance, origine, adresse, care_of, npa, ville, filiere, orientation, ville FROM AGE_ETU_STAT_CUBE_ADMISSION")
+      results_array = result.each(:symbolize_keys => true, :as => :array, :cache_rows => true, :empty_sets => true) do |rowset| end
     end
     
-    
-    sqlrequest = "INSERT INTO 'users'(idpersonne, nom, prenom, created_at, updated_at) VALUES (result.first['id_personne'],result.first['nom'],result.first['prenom'],'','') ;"
-    
-    
+    #----------------------------------
+
+    for i in (0..result.fields.length)
+      printf("%14s", result.fields[i])
+    end
+    for j in (0...result.affected_rows)
+      puts ""
+        for i in (0...result.fields.length)
+          printf("%14s",results[j].at(i))
+        end
+    end    
+
+
+
+
+
     redirect_to :action => :pages/home
+
+
+
+
   end
-  
+
 end
 
 

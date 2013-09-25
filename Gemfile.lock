@@ -22,6 +22,9 @@ GEM
       activesupport (= 3.2.13)
       arel (~> 3.0.2)
       tzinfo (~> 0.3.29)
+    activerecord-import (0.3.1)
+      activerecord (~> 3.0)
+      activerecord (~> 3.0)
     activerecord-sqlserver-adapter (3.2.12)
       activerecord (~> 3.2.0)
     activeresource (3.2.13)
@@ -62,6 +65,9 @@ GEM
     omniauth (1.1.4)
       hashie (>= 1.2, < 3)
       rack
+    paper_trail (2.7.2)
+      activerecord (~> 3.0)
+      railties (~> 3.0)
     polyglot (0.3.3)
     rack (1.4.5)
     rack-cache (1.2)
@@ -114,12 +120,14 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  activerecord-import (= 0.3.1)
   activerecord-sqlserver-adapter
   cancan
   coffee-rails (~> 3.2.1)
   jquery-rails
   multiple_table_inheritance (~> 0.2.1)
   omniauth
+  paper_trail
   rails (= 3.2.13)
   sass-rails (~> 3.2.3)
   sqlite3

@@ -14,7 +14,7 @@ class Admin::UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(params[:user].merge :subtype => 'user') # Création de l'utilisateur, et ajout de la valeur "user" dans le paramètre "subtype" 
+    @user = User.new(params[:user].merge :subtype => 'user') # Création de l'utilisateur, et ajout de la valeur "user" dans l'attribut "subtype" 
     if @user.save 
       redirect_to admin_users_path, :flash => { :success => 'Utilisateur cree avec succes.' }
     else
