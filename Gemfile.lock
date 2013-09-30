@@ -1,6 +1,7 @@
 GEM
   remote: https://rubygems.org/
   specs:
+    aasm (3.0.22)
     actionmailer (3.2.13)
       actionpack (= 3.2.13)
       mail (~> 2.5.3)
@@ -112,12 +113,12 @@ GEM
     uglifier (2.1.2)
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
-    workflow (1.0.0)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  aasm
   activerecord-import (= 0.3.1)
   activerecord-sqlserver-adapter
   cancan
@@ -130,4 +131,3 @@ DEPENDENCIES
   sqlite3
   tiny_tds
   uglifier (>= 1.0.3)
-  workflow
