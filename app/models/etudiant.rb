@@ -50,7 +50,7 @@ class Etudiant < ActiveRecord::Base
   end
   
   def sync
-    client = TinyTds::Client.new(username: 'EINET\bi-service', password: 'VNes41&bI', host: 'EIBISQL', database: 'EIBISQL')
+    client = TinyTds::Client.new(username: 'username', password: 'secret', host: 'MyHost', database: 'MyDB')
     result = client.execute("SELECT * FROM [AGE_ETU_STAT_CUBE_DIPLOMANTS]") #AGE_ETU_STAT_CUBE_ADMISSION #
     result.each do |row|
       Etudiant.create(:uid => row['user_isa'], 
