@@ -8,6 +8,13 @@ development:
   database: db/development.sqlite3
   pool: 5
   timeout: 5000
+
+sqlserver_bi:
+  adapter: 'sqlserver'
+  host:    'EIBISQL'
+  database: 'EIBISQL'
+  username: 'EINET\bi-service'
+  password: 'VNes41&bI'
  
 
 # Warning: The database defined as "test" will be erased and

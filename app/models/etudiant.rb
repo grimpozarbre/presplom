@@ -27,7 +27,7 @@ class Etudiant < ActiveRecord::Base
       transitions :from => :approved, :to => :validating   
     end
     
-    event :process do       #Utilisateur a valide et/ou apporte des modifications a ses informations
+    event :process do       #Utilisateur a valide et/ou apporte des modifications a ses informations / Un message apparait lorsque l_utilisateur se connecte
       transitions :from => :validating, :to => :processing
     end
     
@@ -48,6 +48,22 @@ class Etudiant < ActiveRecord::Base
     end
     
   end
+  
+  def sync
+    client = TinyTds::Client.new(username: 'EINET\bi-service', password: 'VNes41&bI', host: 'EIBISQL', database: 'EIBISQL')
+    result = client.execute("SELECT * FROM [AGE_ETU_STAT_CUBE_DIPLOMANTS]") #AGE_ETU_STAT_CUBE_ADMISSION #
+    result.each do |row|
+      Etudiant.create(:uid => row['user_isa'], 
+                      :idpersonne => row['id_personne'], 
+                      :titre => row['politesse'], 
+                      :naissance => row['date_naissance'], 
+                      :nom => row['nom'], 
+                      :prenom => row['prenom'], 
+                      :email => row['email_ecole'])
+    end
+  end
+  
+  
   
 
 end
