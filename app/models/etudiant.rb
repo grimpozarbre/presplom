@@ -51,9 +51,9 @@ class Etudiant < ActiveRecord::Base
   
   def sync
     client = TinyTds::Client.new(username: 'username', password: 'secret', host: 'MyHost', database: 'MyDB')
-    result = client.execute("SELECT * FROM [AGE_ETU_STAT_CUBE_DIPLOMANTS]") #AGE_ETU_STAT_CUBE_ADMISSION #
+    result = client.execute("SELECT * FROM [MyTable]")
     result.each do |row|
-      Etudiant.create(:uid => row['user_isa'], 
+      Etudiant.create(:uid => row['username'], 
                       :idpersonne => row['id_personne'], 
                       :titre => row['politesse'], 
                       :naissance => row['date_naissance'], 
