@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130926143335) do
+ActiveRecord::Schema.define(:version => 20131008092103) do
 
   create_table "etudiants", :primary_key => "user_id", :force => true do |t|
     t.string   "titre"
@@ -43,6 +43,20 @@ ActiveRecord::Schema.define(:version => 20130926143335) do
   end
 
   create_table "users", :force => true do |t|
+    t.integer  "as_user_id"
+    t.string   "as_user_type"
+    t.string   "uid"
+    t.string   "idpersonne"
+    t.string   "nom"
+    t.string   "prenom"
+    t.string   "email"
+    t.string   "departement"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "user_type"
+  end
+
+  create_table "users-old", :force => true do |t|
     t.string   "uid"
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
@@ -51,7 +65,7 @@ ActiveRecord::Schema.define(:version => 20130926143335) do
     t.string   "prenom"
     t.string   "email"
     t.string   "departement"
-    t.string   "subtype"
+    t.string   "user_type"
   end
 
 end

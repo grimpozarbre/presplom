@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   acts_as_superclass   #méthode utilisée pour définir qu'un modèle peut être étendu (Multiple Table Inheritance)
+  
   attr_accessible :uid,
                   :nom, 
                   :prenom, 
@@ -8,7 +9,7 @@ class User < ActiveRecord::Base
                   :departement, 
                   :created_at, 
                   :updated_at, 
-                  :subtype, 
+                  :user_type, 
                   :role_ids
                   
   has_and_belongs_to_many :roles  

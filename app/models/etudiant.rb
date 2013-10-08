@@ -1,8 +1,6 @@
 class Etudiant < ActiveRecord::Base
+  acts_as :user
   include AASM
-  #has_paper_trail #Défini que le modèle "Etudiant" utilise le gestionnaire de version
-  
-  inherits_from  :user, :class_name => 'User', :methods => true   #Modèle "Etudiant" hérite du modèle "user"
   
   attr_accessible :titre,
                   :naissance,
@@ -15,8 +13,8 @@ class Etudiant < ActiveRecord::Base
                   :orientation,
                   :mode, 
                   :last_connected_at, 
-                  :statut 
-                  #, :aasm_state
+                  :statut, 
+                  :aasm_state
   
   aasm do
     state :validating, :initial => true
@@ -51,7 +49,7 @@ class Etudiant < ActiveRecord::Base
   
   def sync
     client = TinyTds::Client.new(username: 'EINET\bi-service', password: 'VNes41&bI', host: 'EIBISQL', database: 'EIBISQL')
-    result = client.execute("SELECT * FROM [AGE_ETU_STAT_CUBE_DIPLOMANTS]") #AGE_ETU_STAT_CUBE_ADMISSION #
+    result = client.execute("SELECT * FROM [AGE_ETU_STAT_CUBE_DIPLOMANTS]")
     result.each do |row|
       Etudiant.create(:uid => row['user_isa'], 
                       :idpersonne => row['id_personne'], 
@@ -59,7 +57,15 @@ class Etudiant < ActiveRecord::Base
                       :naissance => row['date_naissance'], 
                       :nom => row['nom'], 
                       :prenom => row['prenom'], 
-                      :email => row['email_ecole'])
+                      :email => row['email_ecole'],
+                      :origine => row['commune_origine'],
+                      :adresse => row['adresse1'],
+                      :care_of => row['adresse2'],
+                      :npa => row['npa_adresse'],
+                      :ville => row['localite_adresse'],
+                      :filiere => row['filiere'],
+                      :orientation => row['orientation'],
+                      :mode => row['mode_enseignement'])
     end
   end
   

@@ -27,7 +27,7 @@ PresPlom::Application.routes.draw do
   end
   
   
-  #match "/auth/failure" => "sessions#failure"
+  match "/auth/failure" => "sessions#failure"  #A tester
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
