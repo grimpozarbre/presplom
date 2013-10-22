@@ -1,0 +1,18 @@
+
+[1mFrom:[0m /home/nicolas/Documents/Aptana Studio 3 Workspace/PresPlom/app/controllers/sessions_controller.rb @ line 6 SessionsController#create:
+
+     [1;34m3[0m: [1;31mdef[0m [1;34mcreate[0m
+     [1;34m4[0m:   auth = request.env[[32m[1;32m"[0m[32momniauth.auth[1;32m"[0m[32m[0m]
+     [1;34m5[0m:   user = [1;34m[4mUser[0m.find_by_uid(auth[[32m[1;32m"[0m[32muid[1;32m"[0m[32m[0m])
+ =>  [1;34m6[0m:   binding.pry
+     [1;34m7[0m:   [1;31mif[0m user = [1;34m[4mUser[0m.where([35mas_user_type[0m: [32m[1;32m'[0m[32mUser[1;32m'[0m[32m[0m)
+     [1;34m8[0m:     session[[1;32m:user_id[0m] = user.id
+     [1;34m9[0m:     redirect_to root_url, [1;32m:notice[0m => [32m[1;32m"[0m[32mSigned in![1;32m"[0m[32m[0m [0;34m# User[0m
+    [1;34m10[0m:   [1;31melse[0m
+    [1;34m11[0m:     session[[1;32m:user_id[0m] = user.id 
+    [1;34m12[0m:     redirect_to mypages, [1;32m:notice[0m => [32m[1;32m"[0m[32mSigned in![1;32m"[0m[32m[0m [0;34m# Etudiant[0m
+    [1;34m13[0m:   [1;31mend[0m
+    [1;34m14[0m: 
+    [1;34m15[0m:     
+    [1;34m16[0m: [1;31mend[0m
+

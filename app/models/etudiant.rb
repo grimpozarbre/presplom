@@ -2,6 +2,9 @@ class Etudiant < ActiveRecord::Base
   acts_as :user
   include AASM
   
+  #scope :last_connected_at, -> { where(:last_connected_at => nil) } #Tous les etudiants qui ne se sont jamais connectes
+
+  
   attr_accessible :titre,
                   :naissance,
                   :origine,
@@ -14,7 +17,21 @@ class Etudiant < ActiveRecord::Base
                   :mode, 
                   :last_connected_at, 
                   :statut, 
-                  :aasm_state
+                  :aasm_state,
+                  :vld_titre,
+                  :vld_nom,
+                  :vld_prenom,
+                  :vld_naissance,
+                  :vld_adresse,
+                  :vld_care_of,
+                  :vld_npa,
+                  :vld_ville,
+                  :vld_filiere,
+                  :vld_orientation,
+                  :vld_mode,
+                  :vld_Commentaires,
+                  :as_user_id
+                  
   
   aasm do
     state :validating, :initial => true
@@ -69,7 +86,7 @@ class Etudiant < ActiveRecord::Base
     end
   end
   
-  
+
   
 
 end

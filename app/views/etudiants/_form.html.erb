@@ -1,0 +1,12 @@
+<%= form_for(@etudiant(params[:id])) do |f| %>
+
+
+<p>
+	<%= f.label :nom, "Nom :" %>
+	<%= f.text_field :vld_nom %>
+</p>
+
+<p>
+	<%= f.submit "Soumettre les modifications" %>
+</p>
+<%end%>

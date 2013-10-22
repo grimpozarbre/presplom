@@ -8,13 +8,19 @@ gem 'rails', '3.2.13'
 gem 'sqlite3'
 gem 'omniauth'                               # Permet l'authentification    
 gem 'cancan'                                 # Permet la gestion de rôles
-#gem 'multiple_table_inheritance', '~> 0.2.1' # Permet l'héritage entre plusieurs tables de BD
 gem 'acts_as_relation', '~> 0.1'
 gem 'tiny_tds' 
 gem 'activerecord-sqlserver-adapter'         # Permet la connection à MS SQLServer
 gem 'activerecord-import', '0.3.1'#, :require => false
-gem 'aasm'                                   # Workflow
+gem 'aasm'                                   # Workflow / state machine
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
+gem 'simple-navigation'
+gem 'date_formatter', '~> 0.0.2'
+gem 'jquery-datatables-rails'
+gem 'has_scope'
+
+
 
 group :development do
   gem 'pry'   

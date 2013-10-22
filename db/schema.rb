@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131008092103) do
+ActiveRecord::Schema.define(:version => 20131014130639) do
 
   create_table "etudiants", :primary_key => "user_id", :force => true do |t|
     t.string   "titre"
@@ -29,6 +29,18 @@ ActiveRecord::Schema.define(:version => 20131008092103) do
     t.string   "created_at"
     t.string   "updated_at"
     t.string   "aasm_state"
+    t.string   "vld_titre"
+    t.string   "vld_nom"
+    t.string   "vld_prenom"
+    t.string   "vld_naissance"
+    t.string   "vld_adresse"
+    t.string   "vld_care_of"
+    t.string   "vld_npa"
+    t.string   "vld_ville"
+    t.string   "vld_filiere"
+    t.string   "vld_orientation"
+    t.string   "vld_mode"
+    t.string   "vld_commentaires"
   end
 
   create_table "roles", :force => true do |t|

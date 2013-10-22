@@ -1,0 +1,87 @@
+<h1>Validation de mes données</h1>
+
+
+
+<%= form_for(@etudiant) do |f| %>
+
+<table>
+  <thead>
+  	<tr>
+	  	<th></th>
+	    <th>Infos en possession de la HEIG-VD</th>
+	    <th>Corrections demandées</th>
+    </tr>
+  </thead>
+  <tbody>
+  	<tr class="label_show_etu">
+	  	<th>Politesse</th>
+	  	<td><%= @etudiant.titre %></td>
+	  	<div><span class="show_vld"><a href="#">E</a></span>
+	  	<div class="div_vld"><%= f.select :vld_titre, options_for_select(%w[Monsieur Madame]) %></div></div>
+  	</tr>
+	<tr class="label_show_etu">
+	  	<th>Nom</th>
+	  	<td><%= @etudiant.nom %></td>
+	  	<div><span class="show_vld"><a href="#">E</a></span>
+	  	<div class="div_vld"><%= f.text_field :vld_nom %></div></div>
+	</tr>
+	<tr class="label_show_etu">
+	  	<th>Prénom</th>
+	  	<td><%= @etudiant.prenom %></td>
+	  	<td><%= f.text_field :vld_prenom %></td>
+	</tr>
+	<tr class="label_show_etu">
+	  	<th>Date de naissance</th>
+	  	<td><%= @etudiant.naissance %></td>
+	  	<td><%= f.text_field :vld_naissance %></td>  
+	</tr>
+	<tr class="label_show_etu">
+	  	<th>Adresse</th>
+	  	<td><%= @etudiant.adresse %></td>
+	  	<td><%= f.text_field :vld_adresse %></td>
+	</tr>
+	<tr class="label_show_etu">
+	  	<th>c/o</th>
+	  	<td><%= @etudiant.care_of %></td>
+	  	<td><%= f.text_field :vld_care_of %></td>
+	</tr>
+	<tr class="label_show_etu">
+	  	<th>NPA</th>
+	  	<td><%= @etudiant.npa %></td>
+	  	<td><%= f.text_field :vld_npa %></td>
+	</tr>
+	<tr class="label_show_etu">
+	  	<th>Ville</th>
+	  	<td><%= @etudiant.ville %></td>
+	  	<td><%= f.text_field :vld_ville %></td>
+	</tr>
+	<tr class="label_show_etu">
+	  	<th>Filière / Orientation</th>
+	  	<td><%= @etudiant.filiere %></td>
+	  	<td><%= f.select :vld_filiere, options_for_select(%w[- Géomatique Microtechnique]) %>
+	  	</td>
+	</tr>
+	<tr class="label_show_etu">
+	  	<th>Orientation</th>
+	  	<td><%= @etudiant.orientation %></td>
+	  	<td><%= f.select :vld_orientation, options_for_select(%w[- Monsieur Madame]) %>
+	  	</td>
+	</tr>
+	<tr class="label_show_etu">
+	  	<th>Mode</th>
+	  	<td><%= @etudiant.mode %></td>
+	  	<td><%= f.select :vld_mode, options_for_select(%w["Plein-temps", "En-emploi"]) %></td>
+	</tr>
+	<tr class="label_show_etu">
+	  	<th>Commentaires</th>
+	  	<td></td>
+	  	<td><%=f.text_area :vld_commentaires,  :cols => "40", :rows => "8" %></td>
+	</tr>
+  </tbody>
+  
+</table>
+<p>
+	<%= f.submit "Soumettre les modifications" %>
+</p>
+<%end%>
+

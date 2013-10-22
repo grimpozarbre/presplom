@@ -14,9 +14,10 @@ class Admin::UsersController < ApplicationController
   end
   
   def create
-    @user = User.new(params[:user].merge :as_user_type => 'User') # Création de l'utilisateur, et ajout de la valeur "user" dans l'attribut "subtype" 
+    @user = User.new(params[:user].merge :as_user_type => 'User') # Création de l'utilisateur, et ajout de la valeur "User" dans l'attribut "as_user_type" 
+    #binding.pry
     if @user.save 
-      redirect_to admin_users_path, :flash => { :success => 'Utilisateur cree avec succes.' }
+      redirect_to admin_users_path #, :flash => { :success => 'Utilisateur cree avec succes.' }
     else
       render :action => 'new'
     end
@@ -47,7 +48,7 @@ class Admin::UsersController < ApplicationController
       flash[:alert] = "You cannot delete yourself!"
     else
       User.find(params[:id]).destroy
-      flash[:notice] = "User has been deleted."
+      flash[:success] = "User has been deleted."
     end
     redirect_to admin_users_path
   end

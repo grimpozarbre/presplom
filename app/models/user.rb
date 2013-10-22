@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  acts_as_superclass   #méthode utilisée pour définir qu'un modèle peut être étendu (Multiple Table Inheritance)
+  acts_as_superclass   #Etabli la relation d heritage entre User et Etudiant
   
   attr_accessible :uid,
                   :nom, 
@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
                   :departement, 
                   :created_at, 
                   :updated_at, 
-                  :user_type, 
+                  :as_user_type, 
                   :role_ids
                   
   has_and_belongs_to_many :roles  

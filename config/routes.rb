@@ -15,19 +15,20 @@ PresPlom::Application.routes.draw do
   get '/auth/developer', as: :omniauth
 
   match "/signout" => "sessions#destroy", :as => :signout
+  match "/auth/failure" => "sessions#failure"  #A tester
   
   resources :users
-  resources :etudiants
+  resources :etudiants #, :only => [:create, :destroy]
+  
   
   
   namespace :admin do 
     get '', to: 'dashboard#index', as: '/'   # dashboard#index 
-    resources :users
-    resources :etudiants
+    resources :users, :etudiants
   end
   
   
-  match "/auth/failure" => "sessions#failure"  #A tester
+  
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
