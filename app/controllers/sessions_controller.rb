@@ -7,10 +7,12 @@ class SessionsController < ApplicationController
       #binding.pry
       session[:user_id] = user.id
       redirect_to etudiants_path, :notice => "Signed in!" 
-    elsif user.as_user_type == 'Etudiant' then                                 # Etudiant
+    elsif user.as_user_type == 'Etudiant' then  # Etudiant
       session[:user_id] = user.id
       #binding.pry
-      redirect_to edit_etudiant_path(user) #redirection vers la page de l etudiant qui vient de se logguer
+      #redirect_to '/etudiants/dashboard', :id => user.as_user_id   #redirection vers la page de l etudiant qui vient de se logguer
+      redirect_to dashboard_etudiant_path, :id => user.as_user_id
+      #redirect_to :controller => 'dashboard', :action => 'index', :id => user.as_user_id
     else
     end
       

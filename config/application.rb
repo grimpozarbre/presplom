@@ -63,5 +63,6 @@ module PresPlom
     
     config.assets.initialize_on_precompile = false
     
+    config.assets.paths += Dir["#{Rails.root}/app/assets/*"].sort_by { |dir| -dir.size }
   end
 end

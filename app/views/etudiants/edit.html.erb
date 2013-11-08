@@ -1,3 +1,28 @@
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+$( document ).ready(function() {
+	$('#demande_modifs').click(function() {
+		$('.disabled_form').prop('disabled', false);
+		//$('.disable_input :input').prop('disabled', true);
+		$('#etudiant_old_titre').val($('#etudiant_titre').val());
+    	$('#etudiant_old_nom').val($('#etudiant_nom').val());
+    	$('#etudiant_old_prenom').val($('#etudiant_prenom').val());
+    	$('#etudiant_old_naissance').val($('#etudiant_naissance').val());
+    	$('#etudiant_old_adresse').val($('#etudiant_adresse').val());
+    	$('#etudiant_old_care_of').val($('#etudiant_care_of').val());
+    	$('#etudiant_old_npa').val($('#etudiant_npa').val());
+    	$('#etudiant_old_ville').val($('#etudiant_ville').val());
+    	$('#etudiant_old_filiere').val($('#etudiant_filiere').val());
+    	$('#etudiant_old_orientation').val($('#etudiant_orientation').val());
+    	$('#etudiant_old_mode').val($('#etudiant_mode').val());
+	});
+});
+</script>
+
+
+
 <h1>Validation de mes données</h1>
 
 
@@ -5,83 +30,81 @@
 <%= form_for(@etudiant) do |f| %>
 
 <table>
-  <thead>
   	<tr>
 	  	<th></th>
 	    <th>Infos en possession de la HEIG-VD</th>
 	    <th>Corrections demandées</th>
     </tr>
-  </thead>
-  <tbody>
-  	<tr class="label_show_etu">
-	  	<th>Politesse</th>
-	  	<td><%= @etudiant.titre %></td>
-	  	<div><span class="show_vld"><a href="#">E</a></span>
-	  	<div class="div_vld"><%= f.select :vld_titre, options_for_select(%w[Monsieur Madame]) %></div></div>
+  	<tr>
+	  	<th class="label_show_etu">Politesse</th>
+	  	<td><div id="disabled_form" class="disabled"><%= f.select :titre,    options_for_select(%w[- Monsieur Madame]), :disabled => true, :class => "disabled_form" %></div></td>	
+	  	<td><div id="hidden" class="hidden"><%= f.text_field :old_titre, :readonly => true, :class => "hidden"  %></div></td>
   	</tr>
 	<tr class="label_show_etu">
 	  	<th>Nom</th>
-	  	<td><%= @etudiant.nom %></td>
-	  	<div><span class="show_vld"><a href="#">E</a></span>
-	  	<div class="div_vld"><%= f.text_field :vld_nom %></div></div>
+	  	<td><div id="disabled_form" class="disabled_form"><%= f.text_field :nom, :disabled => true, :class => "disabled_form"   %></div></td>
+	  	<td><div id="hidden_old_nom" class="hidden"><%= f.text_field :old_nom, :readonly => true, :class => "hidden" %></div></td>
 	</tr>
 	<tr class="label_show_etu">
 	  	<th>Prénom</th>
-	  	<td><%= @etudiant.prenom %></td>
-	  	<td><%= f.text_field :vld_prenom %></td>
+	  	<td><div id="disabled_form" class="disabled"><%= f.text_field :prenom %></div></td>
+	  	<td><div id="hidden" class="hidden"><%= f.text_field :old_prenom, :readonly => true, :class => "hidden"   %></div></td>
 	</tr>
 	<tr class="label_show_etu">
 	  	<th>Date de naissance</th>
-	  	<td><%= @etudiant.naissance %></td>
-	  	<td><%= f.text_field :vld_naissance %></td>  
+	  	<td><div id="disabled_form" class="disabled"><%= f.text_field :naissance, :disabled => true, :class => "disabled_form"   %></div></td>
+	  	<td><div id="hidden" class="hidden"><%= f.text_field :old_naissance, :readonly => true, :class => "hidden"   %></div></td>
 	</tr>
 	<tr class="label_show_etu">
 	  	<th>Adresse</th>
-	  	<td><%= @etudiant.adresse %></td>
-	  	<td><%= f.text_field :vld_adresse %></td>
+	  	<td><div id="disabled_form" class="disabled"><%= f.text_field :adresse, :disabled => true, :class => "disabled_form"   %></div></td>
+	  	<td><div id="hidden" class="hidden"><%= f.text_field :old_adresse, :readonly => true, :class => "hidden"   %></div></td>
 	</tr>
 	<tr class="label_show_etu">
 	  	<th>c/o</th>
-	  	<td><%= @etudiant.care_of %></td>
-	  	<td><%= f.text_field :vld_care_of %></td>
+	  	<td><div id="disabled_form" class="disabled"><%= f.text_field :care_of, :disabled => true, :class => "disabled_form"   %></div></td>
+	  	<td><div id="hidden" class="hidden"><%= f.text_field :old_care_of, :readonly => true, :class => "hidden"   %></div></td>
 	</tr>
 	<tr class="label_show_etu">
 	  	<th>NPA</th>
-	  	<td><%= @etudiant.npa %></td>
-	  	<td><%= f.text_field :vld_npa %></td>
+	  	<td><div id="disabled_form" class="disabled"><%= f.text_field :npa, :disabled => true, :class => "disabled_form"   %></div></td>
+	  	<td><div id="hidden" class="hidden"><%= f.text_field :old_npa, :readonly => true, :class => "hidden"   %></div></td>
 	</tr>
 	<tr class="label_show_etu">
 	  	<th>Ville</th>
-	  	<td><%= @etudiant.ville %></td>
-	  	<td><%= f.text_field :vld_ville %></td>
+	  	<td><div id="disabled_form" class="disabled"><%= f.text_field :ville, :disabled => true, :class => "disabled_form"   %></div></td>
+	  	<td><div id="hidden" class="hidden"><%= f.text_field :old_ville, :readonly => true, :class => "hidden"   %></div></td>
 	</tr>
 	<tr class="label_show_etu">
-	  	<th>Filière / Orientation</th>
-	  	<td><%= @etudiant.filiere %></td>
-	  	<td><%= f.select :vld_filiere, options_for_select(%w[- Géomatique Microtechnique]) %>
+	  	<th>Filière</th>
+	  	<td><div id="disabled_form" class="disabled"><%= f.select :filiere, options_for_select(%w[- Géomatique Microtechnique]), :disabled => true, :class => "disabled_form"   %></div></td>
+	  	<td><div id="hidden" class="hidden"><%= f.text_field :old_filiere, :readonly => true, :class => "hidden"   %></div></td>
 	  	</td>
 	</tr>
 	<tr class="label_show_etu">
 	  	<th>Orientation</th>
-	  	<td><%= @etudiant.orientation %></td>
-	  	<td><%= f.select :vld_orientation, options_for_select(%w[- Monsieur Madame]) %>
+	  	<td><div id="disabled_form" class="disabled"><%= f.select :orientation, options_for_select(%w[- Géomatique Microtechnique]), :disabled => true, :class => "disabled_form"   %></div></td>
+	  	<td><div id="hidden" class="hidden"><%= f.text_field :old_orientation, :readonly => true, :class => "hidden"   %></div></td>
 	  	</td>
 	</tr>
 	<tr class="label_show_etu">
 	  	<th>Mode</th>
-	  	<td><%= @etudiant.mode %></td>
-	  	<td><%= f.select :vld_mode, options_for_select(%w["Plein-temps", "En-emploi"]) %></td>
+	  	<td><div id="disabled_form" class="disabled"><%= f.select :mode, options_for_select(%w["Plein-temps", "En-emploi"]), :disabled => true, :class => "disabled_form"   %></div></td>
+	  	<td><div id="hidden" class="hidden"><%= f.text_field :old_mode, :readonly => true, :class => "hidden"   %></div></td>
 	</tr>
 	<tr class="label_show_etu">
 	  	<th>Commentaires</th>
+	  	<td><div id="disabled" class="disabled"><%= f.text_area :commentaires  %></div></td>
 	  	<td></td>
-	  	<td><%=f.text_area :vld_commentaires,  :cols => "40", :rows => "8" %></td>
 	</tr>
-  </tbody>
+	
   
 </table>
+
 <p>
-	<%= f.submit "Soumettre les modifications" %>
+	
+	<div id="demande_modifs" ><%= submit_tag "Je souhaite apporter des modifications", :type => 'button' %></div>
+	<div id="validation" ><%= f.submit "Soumettre les modifications" %></div>
 </p>
 <%end%>
 

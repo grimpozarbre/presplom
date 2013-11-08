@@ -2,7 +2,14 @@ class Etudiant < ActiveRecord::Base
   acts_as :user
   include AASM
   
-  #scope :last_connected_at, -> { where(:last_connected_at => nil) } #Tous les etudiants qui ne se sont jamais connectes
+  
+  has_many :materiel_etudiants
+  has_many :materiels, :through => :materiel_etudiants
+  
+  scope :never_connected, where(:last_connected_at => 'NULL') #Tous les etudiants qui ne se sont jamais connectes
+  scope :all_change, where(:aasm_state => 'processing')   #Toutes les demandes de changement
+  scope :all_change_approved, where(:aasm_state => 'approved')   #Toutes les corrections faites
+  scope :all_change_pending, where(:aasm_state => 'processing')
 
   
   attr_accessible :titre,
@@ -18,21 +25,25 @@ class Etudiant < ActiveRecord::Base
                   :last_connected_at, 
                   :statut, 
                   :aasm_state,
-                  :vld_titre,
-                  :vld_nom,
-                  :vld_prenom,
-                  :vld_naissance,
-                  :vld_adresse,
-                  :vld_care_of,
-                  :vld_npa,
-                  :vld_ville,
-                  :vld_filiere,
-                  :vld_orientation,
-                  :vld_mode,
-                  :vld_Commentaires,
+                  :old_titre,
+                  :old_nom,
+                  :old_prenom,
+                  :old_naissance,
+                  :old_adresse,
+                  :old_care_of,
+                  :old_npa,
+                  :old_ville,
+                  :old_filiere,
+                  :old_orientation,
+                  :old_mode,
+                  :commentaires,
                   :as_user_id
                   
   
+
+
+
+
   aasm do
     state :validating, :initial => true
     state :processing
@@ -63,30 +74,6 @@ class Etudiant < ActiveRecord::Base
     end
     
   end
+ 
   
-  def sync
-    client = TinyTds::Client.new(username: 'username', password: 'secret', host: 'MyHost', database: 'MyDB')
-    result = client.execute("SELECT * FROM [MyTable]")
-    result.each do |row|
-      Etudiant.create(:uid => row['username'], 
-                      :idpersonne => row['id_personne'], 
-                      :titre => row['politesse'], 
-                      :naissance => row['date_naissance'], 
-                      :nom => row['nom'], 
-                      :prenom => row['prenom'], 
-                      :email => row['email_ecole'],
-                      :origine => row['commune_origine'],
-                      :adresse => row['adresse1'],
-                      :care_of => row['adresse2'],
-                      :npa => row['npa_adresse'],
-                      :ville => row['localite_adresse'],
-                      :filiere => row['filiere'],
-                      :orientation => row['orientation'],
-                      :mode => row['mode_enseignement'])
-    end
-  end
-  
-
-  
-
 end

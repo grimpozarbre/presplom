@@ -1,6 +1,6 @@
-class Admin::UsersController < ApplicationController
+ class Admin::UsersController < ApplicationController
 
-  
+  before_filter :require_user
   def index
     @users = User.where(as_user_type: 'User').all  # Tous les utilisateurs, exceptés les étudiants
   end

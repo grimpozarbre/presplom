@@ -22,15 +22,15 @@
 	</div>
 	<div id="columns">
 		<div id="sidebar">
-			<%= link_to "Tous les étudiants", etudiants_path %><br />
-			<%= link_to "Etudiants connectés", etudiants_path %><br />
-			<%= link_to "Etudiants jamais connectés"  %><br />
-			<%= link_to "Toutes les demandes de changement", etudiants_path %><br />
-			<%= link_to "Toutes les corrections à faire", etudiants_path %><br />
-			<%= link_to "Toutes les corrections faites", etudiants_path %>
+				<%= link_to "Tous les étudiants", etudiants_path %><br />
+				<%= link_to "Etudiants connectés" %><br /> 
+				<%= link_to "Etudiants jamais connectés", never_connected_etudiants_path  %><br />
+				<%= link_to "Toutes les demandes de changement" %><br />
+				<%= link_to "Toutes les corrections à faire" %><br />
+				<%= link_to "Toutes les corrections faites" %>
 		</div>		
 		<section class="main">
-			<%= render_navigation :renderer => :breadcrumbs, :join_with => " | " %>
+		
 			<%= yield %>
 		</section>
 		<%= render 'layouts/footer'%>

@@ -1,5 +1,8 @@
 PresPlom::Application.routes.draw do
   
+ 
+  get "destroy/dashboard"
+
   #get "users/index"
 
   #get "dashboard/index"
@@ -8,26 +11,36 @@ PresPlom::Application.routes.draw do
   
   root :to => 'pages#home'
   
-  get "protected" => 'protected#index'
-  get "sessions/create"
+  get 'protected' => 'protected#index'
+  get 'sessions/create'
   
   post '/auth/:provider/callback', to: 'sessions#create'
   get '/auth/developer', as: :omniauth
 
-  match "/signout" => "sessions#destroy", :as => :signout
-  match "/auth/failure" => "sessions#failure"  #A tester
+  match '/signout' => 'sessions#destroy', :as => :signout
+  match '/auth/failure' => 'sessions#failure'  #A tester
   
   resources :users
-  resources :etudiants #, :only => [:create, :destroy]
   
+  #match '/etudiants/dashboard/*path' => 'dashboard#index'
+
+  resources :etudiants
+
+  get 'etudiants/never_connected' => 'etudiants#never_connected', :as => 'never_connected_etudiants'
+
+  #resources :etudiants do #, :only => [:edit, :show] do  #, :only => [:create, :destroy]
+     #get '', to: 'dashboard#index', as: 'dashboard'
+  #  get 'dashboard' => 'dashboard#index'
+  #end
+
+  resources :materiel_etudiants
   
+  resources :materiels
   
   namespace :admin do 
     get '', to: 'dashboard#index', as: '/'   # dashboard#index 
-    resources :users, :etudiants
+    resources :users, :etudiants, :materiels, :modele_emails
   end
-  
-  
   
   
   # The priority is based upon order of creation:

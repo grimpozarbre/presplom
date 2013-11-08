@@ -1,15 +1,10 @@
 
 class EtudiantsController < ApplicationController
-  
-  has_scope :last_connected_at, :type => :boolean 
-   
+     
     
   def index                       #Vue de tous les étudiants pour un utilisateur "User"
     @etudiants = nil
-    #@etudiants = Etudiant.all
-    #@etudiants_grid = initialize_grid(apply_scopes(Etudiant).all)
-    
-    #@etudiants_grid = initialize_grid(Etudiant)
+
     respond_to do |format|
       format.html
       format.json {
@@ -38,6 +33,43 @@ class EtudiantsController < ApplicationController
   def update
     @etudiant = Etudiant.find(params[:id])
   end
+  
+  def neverconnected 
+    @etudiants = Etudiant.neverconnected
+    render 'index'
+  end
+
+
+
+
+  def sync
+    client = TinyTds::Client.new(username: 'EINET\bi-service', password: 'VNes41&bI', host: 'EIBISQL', database: 'EIBISQL')
+
+    if condition
+      
+    
+    result = client.execute("SELECT * FROM [AGE_ETU_STAT_CUBE_DIPLOMANTS]")
+    result.each do |row|
+      Etudiant.create(:uid => row['username'], 
+                      :idpersonne => row['id_personne'], 
+                      :titre => row['politesse'], 
+                      :naissance => row['date_naissance'], 
+                      :nom => row['nom'], 
+                      :prenom => row['prenom'], 
+                      :email => row['email_ecole'],
+                      :origine => row['commune_origine'],
+                      :adresse => row['adresse1'],
+                      :care_of => row['adresse2'],
+                      :npa => row['npa_adresse'],
+                      :ville => row['localite_adresse'],
+                      :filiere => row['filiere'],
+                      :orientation => row['orientation'],
+                      :mode => row['mode_enseignement'])
+    end
+  end
+end
+
+  
 
 end
 

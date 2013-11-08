@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  id: 
+  nom: MyString
+  description: MyText
+  type: 
+  defaut: false
+
+two:
+  id: 
+  nom: MyString
+  description: MyText
+  type: 
+  defaut: false

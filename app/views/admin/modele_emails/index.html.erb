@@ -1,0 +1,22 @@
+<h1>Modèles de mails</h1>
+
+<table>
+  <tr>
+    <th>Nom</th>
+    <th>Description</th>
+    <th></th>
+  </tr>
+
+<% @modele_emails.each do |modele_email| %>
+  <tr>
+    <td><%= modele_email.nom %></td>
+    <td><%= modele_email.description %></td>
+    <td><%= link_to 'Editer', edit_admin_modele_email_path(modele_email) %></td>
+    
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Ajouter un modèle', new_admin_modele_email_path %>

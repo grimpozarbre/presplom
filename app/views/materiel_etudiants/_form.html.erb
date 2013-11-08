@@ -1,0 +1,21 @@
+<table>
+  <tr>
+    <th>Nom</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Quantité souhaitée</th>
+  </tr>
+<% @materiels.each do |materiel| %>
+  <tr>
+    <td><%= materiel.nom %></td>
+    <td><%= materiel.description  %></td>
+    <td><%= materiel.type_materiel %></td>
+    <td><%= materiel_etudiant.quantite %></td>
+   
+  
+  </tr>
+<% end %>
+</table>
+<p>
+	<%= f.submit "Valider la commande" %>
+</p>

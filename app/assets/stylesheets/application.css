@@ -45,3 +45,42 @@ label{
   margin-right: 0.5em;
   display: block
 }
+
+/************************
+ * 	ICONES
+ * 
+ */
+
+a.button{
+/*background:url(images/button.gif); */
+/*display:block; */	
+color:#555555;
+font-weight:bold;
+height:30px;
+ /*line-height:29px; */
+/* margin-bottom:14px; */
+text-decoration:none;
+width:50px; 
+}
+a:hover.button{
+color:#0066CC;
+}
+
+
+/* -------------------- */
+/* CLASSES ICONES */
+/* -------------------- */
+
+.modify{
+background:url(pencil_16.png) no-repeat 16px 16px;
+text-indent:30px;
+/*display:block; */
+}
+
+.delete{
+background:url(delete_16.png) no-repeat 16px 16px;
+text-indent:30px;
+text-align: right;
+/* display:block; */
+}
+

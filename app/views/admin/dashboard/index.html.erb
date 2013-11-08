@@ -4,5 +4,11 @@
 	<li><%= link_to 'Tous les utilisateurs', admin_users_path %></li>
 	<li><%= link_to 'Ajouter un utilisateur', new_admin_user_path %></li>
 	<br />
+	<li><%= link_to 'Tous les matériels', admin_materiels_path %></li>
+	<li><%= link_to 'Ajouter un matériel', new_admin_materiel_path %></li>
+	<br />
+	<li><%= link_to 'Tous les modèles de mails', admin_modele_emails_path %></li>
+	<li><%= link_to 'Ajouter un modèle', new_admin_modele_email_path %></li>
+	<br />
 	<li><%= link_to 'Mise à jour des diplômants',:controller=>"etudiants", :method => :sync %></li>
 </ul>

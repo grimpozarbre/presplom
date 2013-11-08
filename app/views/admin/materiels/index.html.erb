@@ -1,0 +1,27 @@
+<h1>Matériels</h1>
+
+<table>
+  <tr>
+    <th>id</th>
+    <th>Nom</th>
+    <th>Description</th>
+    <th>Type</th>
+    <th>Par défaut</th>
+  </tr>
+<% @materiels.each do |materiel| %>
+  <tr>
+    <td><%= materiel.id %></td>
+    <td><%= materiel.nom %></td>
+    <td><%= materiel.description  %></td>
+    <td><%= materiel.type_materiel %></td>
+    <td><%= materiel.defaut %></td>
+   
+    <td><%= link_to 'Edit', edit_admin_materiel_path(materiel) %></td>
+  
+  
+  </tr>
+<% end %>
+</table>
+ <br /> <%= link_to 'Ajouter un matériel', new_admin_materiel_path %>
+
+ 

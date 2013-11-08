@@ -4,6 +4,12 @@
 
 .label_show_etu {
   text-align: left;
+  
+}
+
+.disabled_form:disabled
+{
+background-color:#ffff00;
 }
 
 #datatable_container{
@@ -15,10 +21,25 @@
   font-weight: bold;
 }
 
-td,th {
+#click{
+
+padding-left: 17px;
+}
+
+/*
+td, th{
   padding: .2em .2em;
-  font-size:12px
+  font-size:12px;
+}
+*/
+
+tr,td, th {
+  padding: .2em .2em;
+  font-size:12px;
+  /*vertical-align: middle;	*/
   }
+ 
+
 
 tr.even td { background-color: #e0f3f5; }
 tr.odd td  { background-color: #a3d9eb; }

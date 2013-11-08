@@ -11,11 +11,11 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131014130639) do
+ActiveRecord::Schema.define(:version => 20131107214244) do
 
   create_table "etudiants", :primary_key => "user_id", :force => true do |t|
     t.string   "titre"
-    t.string   "naissance"
+    t.datetime "naissance",         :limit => 255
     t.string   "origine"
     t.string   "adresse"
     t.string   "care_of"
@@ -25,22 +25,46 @@ ActiveRecord::Schema.define(:version => 20131014130639) do
     t.string   "orientation"
     t.string   "mode"
     t.datetime "last_connected_at"
-    t.string   "statut"
     t.string   "created_at"
     t.string   "updated_at"
     t.string   "aasm_state"
-    t.string   "vld_titre"
-    t.string   "vld_nom"
-    t.string   "vld_prenom"
-    t.string   "vld_naissance"
-    t.string   "vld_adresse"
-    t.string   "vld_care_of"
-    t.string   "vld_npa"
-    t.string   "vld_ville"
-    t.string   "vld_filiere"
-    t.string   "vld_orientation"
-    t.string   "vld_mode"
-    t.string   "vld_commentaires"
+    t.string   "old_titre"
+    t.string   "old_nom"
+    t.string   "old_prenom"
+    t.string   "old_naissance"
+    t.string   "old_adresse"
+    t.string   "old_care_of"
+    t.string   "old_npa"
+    t.string   "old_ville"
+    t.string   "old_filiere"
+    t.string   "old_orientation"
+    t.string   "old_mode"
+    t.string   "commentaires"
+  end
+
+  create_table "materiel_etudiants", :id => false, :force => true do |t|
+    t.integer  "materiel_id"
+    t.integer  "etudiant_id"
+    t.integer  "quantite"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "materiels", :force => true do |t|
+    t.string   "nom"
+    t.text     "description"
+    t.string   "type_materiel"
+    t.boolean  "defaut"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
+  create_table "modele_emails", :force => true do |t|
+    t.string   "nom"
+    t.text     "description"
+    t.text     "contenu"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "roles", :force => true do |t|
@@ -65,18 +89,6 @@ ActiveRecord::Schema.define(:version => 20131014130639) do
     t.string   "departement"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "user_type"
-  end
-
-  create_table "users-old", :force => true do |t|
-    t.string   "uid"
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-    t.integer  "idpersonne",  :limit => 255
-    t.string   "nom"
-    t.string   "prenom"
-    t.string   "email"
-    t.string   "departement"
     t.string   "user_type"
   end
 

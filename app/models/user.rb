@@ -20,12 +20,12 @@ class User < ActiveRecord::Base
   end
   
   
-  def self.create_with_omniauth(auth)  
-    create! do |user|  
-      user.id = auth["id"]  
-      user.name = auth["user_info"]["name"]  
-    end  
-  end
+  #def self.create_with_omniauth(auth)  
+  #  create! do |user|  
+  #    user.id = auth["id"]  
+  #    user.name = auth["user_info"]["name"]  
+  #  end  
+  #end
   
 end
   
